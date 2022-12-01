@@ -1,0 +1,47 @@
+.btn.btn-lg {
+    padding: 10px;
+    font-size: 20px;
+    padding-bottom: 20px;
+    padding-left: 700px;
+    padding-right: 780px;
+    border-radius: 20px;
+    line-height: 21px;
+    margin-bottom: 21px;
+    
+
+   
+}
+.btn {
+    letter-spacing: normal;
+    font-size: 20px;
+}
+.btn-primary, .btn-primary.disabled {
+    box-shadow: rgb(50 54 56) 0px 2px 6px;
+    background-color: rgb(14, 29, 137);
+    border-color: rgb(15, 29, 138);
+}
+.section-btn{
+    padding: 10px;
+    padding-right: 50px;
+
+}
+
+
+.btn {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 24px;
+    padding: 0.3rem 0.8rem;
+    letter-spacing: .5px;
+}
+
+.a {
+    color: #6777ef;
+    font-weight: 500;
+    transition: all .5s;
+    -webkit-transition: all .5s;
+    -o-transition: all .5s;
+    padding-inline-start: 10px;
+    
+}
+
