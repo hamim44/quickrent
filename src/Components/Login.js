@@ -10,18 +10,18 @@ const Login = ()=>{
 
     const loginSubmit= ()=>{
         var obj = {email: email, password: password};
-        //alert (JSON.stringify(obj));
+        alert (JSON.stringify(obj));
         axios.post("http://127.0.0.1:8000/api/login",obj)
         .then(resp=>{
             var token = resp.data;
             console.log(token);
-            var user = {userId: token.userid, access_token:token.token};
+            var user = {id: token.c_id, access_token:token.token};
             localStorage.setItem('user',JSON.stringify(user));
             console.log(localStorage.getItem('user'));
-            if(token == "No user found"){
+            if(token == "notFound"){
                 navigate('/login');
             }else{
-                navigate('/apiproducts');
+                navigate('/customer/Dash');
             }
         }).catch(err=>{
             console.log(err);

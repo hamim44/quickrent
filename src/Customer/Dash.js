@@ -17,7 +17,7 @@ const Dash = () => {
 
 
                  <script>
-                    <link>        </link>
+                    {/* <link>        </link> */}
                  </script>
                         <a href="/"><button type="submit" className="btn btn-primary btn-lg btn-block">
                                   My Products </button></a> <br></br>
