@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-import Post from "./Post";
 import Table from 'react-bootstrap/Table';
 import './Product.css';
 

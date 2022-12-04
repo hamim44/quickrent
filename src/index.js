@@ -12,6 +12,7 @@ import APIProducts from './Components/APIProducts';
 import Login from './Components/Login';
 import Logout from './Components/Logout';
 import Dash from  './Customer/Dash';
+import Registration from './Components/Registration';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -26,6 +27,7 @@ root.render(
       <Route exact path='/logout' element={<Logout/>} />
       <Route exact path='/logout' element={<Logout/>} />
       <Route exact path='/customer/Dash' element={<Dash/>} />
+      <Route exact path='/registration' element={<Registration/>} />
       </Routes>
      
     </Router>
