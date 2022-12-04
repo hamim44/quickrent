@@ -1,6 +1,7 @@
 import React, {Customer} from "react";
 import { Link } from "react-router-dom";
 import './Dash.css';
+import Customermanu from "./Customermanu";
 
 
 const Dash = () => {
@@ -9,6 +10,8 @@ const Dash = () => {
     return(
         
        <div className="">
+
+                 <Customermanu/>
            
                 <div className="">
                     <h1> HomePage</h1>

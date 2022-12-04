@@ -11,6 +11,7 @@ import ProductDetail from './Components/ProductDetail';
 import APIProducts from './Components/APIProducts';
 import Login from './Components/Login';
 import Logout from './Components/Logout';
+import Product from  './Components/Product';
 import Dash from  './Customer/Dash';
 import Registration from './Components/Registration';
 
@@ -25,7 +26,7 @@ root.render(
       <Route exact path='/apiproducts' element={<APIProducts/>} />
       <Route exact path='/login' element={<Login/>} />
       <Route exact path='/logout' element={<Logout/>} />
-      <Route exact path='/logout' element={<Logout/>} />
+      <Route exact path='/Product' element={<Product/>} />
       <Route exact path='/customer/Dash' element={<Dash/>} />
       <Route exact path='/registration' element={<Registration/>} />
       </Routes>
