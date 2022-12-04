@@ -8,7 +8,6 @@ import Firstpage from './Components/Firstpage';
 import Foot from './Components/Foot';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import ProductDetail from './Components/ProductDetail';
-import EffectHookCheck from './Components/EffectHookCheck';
 import APIProducts from './Components/APIProducts';
 import Login from './Components/Login';
 import Logout from './Components/Logout';
@@ -22,8 +21,6 @@ root.render(
       <Route exact path='' element={<Firstpage />} />
       <Route exact path='/profile' element={<Profile />} />
       <Route exact path='/contact' element={<Contact />} /> 
-
-      <Route exact path='/effect' element={<EffectHookCheck/>} />
       <Route exact path='/apiproducts' element={<APIProducts/>} />
       <Route exact path='/login' element={<Login/>} />
       <Route exact path='/logout' element={<Logout/>} />
