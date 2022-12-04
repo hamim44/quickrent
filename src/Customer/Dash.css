@@ -2,7 +2,7 @@
     padding: 10px;
     font-size: 20px;
     padding-bottom: 20px;
-    padding-left: 700px;
+    padding-left: 773px;
     padding-right: 780px;
     border-radius: 20px;
     line-height: 21px;
@@ -24,6 +24,10 @@
     padding: 10px;
     padding-right: 50px;
 
+}
+button#dropdown-basic-button {
+    font-size: 20px;
+    margin-left: 1500px;
 }
 
 
