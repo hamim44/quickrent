@@ -15,10 +15,10 @@ const Login = ()=>{
         .then(resp=>{
             var token = resp.data;
             console.log(token);
-            var user = {userId: token.userid, access_token:token.token};
+            var user = {userId: token.c_id, access_token:token.token};
             localStorage.setItem('user',JSON.stringify(user));
             console.log(localStorage.getItem('user'));
-            if(token == "No user found"){
+            if(token == "notFound"){
                 navigate('/login');
             }else{
                 navigate('/customer/Dash');
