@@ -12,8 +12,14 @@ const Logout = ()=>{
     axios.post("http://127.0.0.1:8000/api/logout",obj)
         .then(resp=>{
             var token = resp.data;
-            console.log(token);
-            navigate('/login');
+            if(token){
+                localStorage.clear();
+                navigate('/login');
+            }
+            else{
+                alert('logout failed');
+            }
+
         }).catch(err=>{
             console.log(err);
         });
