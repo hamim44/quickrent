@@ -23,6 +23,7 @@ const Login = ()=>{
             if(token == "notFound"){
                 navigate('/login');
             }else{
+                alert('incorrect email or password');
                 navigate('/customer/Dash');
             }
         }).catch(err=>{
