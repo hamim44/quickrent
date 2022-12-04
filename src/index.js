@@ -18,19 +18,17 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Router>
-      <Firstpage/>
       <Routes>
-
+      <Route exact path='' element={<Firstpage />} />
       <Route exact path='/profile' element={<Profile />} />
       <Route exact path='/contact' element={<Contact />} /> 
-      <Route exact path='/product:id' element={<ProductDetail/>} />
+
       <Route exact path='/effect' element={<EffectHookCheck/>} />
-      <Route exact path='/ProductDetail' element={<ProductDetail/>} />
       <Route exact path='/apiproducts' element={<APIProducts/>} />
       <Route exact path='/login' element={<Login/>} />
       <Route exact path='/logout' element={<Logout/>} />
       <Route exact path='/logout' element={<Logout/>} />
-      <Route exact path='customer/Dash' element={<Dash/>} />
+      <Route exact path='/customer/Dash' element={<Dash/>} />
       </Routes>
      
     </Router>

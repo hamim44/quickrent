@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import './Firstpage.css';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import ProductDetail from "./ProductDetail";
 
 const Firstpage = () => {
     return(
@@ -26,6 +27,8 @@ const Firstpage = () => {
                 </div>            
             </div>
        </div> 
+
+       <ProductDetail/>
 
        <div className="contact">
            <div className="rt-container">
