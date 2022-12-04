@@ -4,13 +4,13 @@ import { useNavigate } from "react-router-dom";
 
 const Login = ()=>{
     let[token, setToken]= useState("");
-    let[name, setName] = useState("");
+    let[email, setEmail] = useState("");
     let[password, setPassword] =useState("");
     const navigate = useNavigate();
 
     const loginSubmit= ()=>{
-        var obj = {username: name, password: password};
-        alert (obj.username);
+        var obj = {email: email, password: password};
+        //alert (JSON.stringify(obj));
         axios.post("http://127.0.0.1:8000/api/login",obj)
         .then(resp=>{
             var token = resp.data;
@@ -32,7 +32,7 @@ const Login = ()=>{
     return(
         <div>
             <form>
-                <input type="text" value={name} onChange={(e)=>setName(e.target.value)}></input>
+                <input type="text" value={email} onChange={(e)=>setEmail(e.target.value)}></input>
                 <input type="password" value={password} onChange={(e)=>setPassword(e.target.value)}></input>
 
             </form>
