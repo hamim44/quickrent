@@ -65,7 +65,7 @@ return(
         </p>
         </form>
         <div className="d-grid gap-2 mt-3">
-          <button type="submit" className="btn btn-primary" onClick={regSubmit()}>
+          <button type="submit" className="btn btn-primary" onClick={regSubmit}>
             Submit
           </button>
         </div>
