@@ -1,10 +1,21 @@
-import React, { useState } from "react"
+import React, {useState, userEffect} from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css"
 import './registration.css';
 
 const Registration = ()=>{
-
-
+  let[name, setName] = useState("");
+  let[email, setEmail] = useState("");
+  let[password, setPassword] =useState("");
+  let[confirmPassword, setConfirmPassword] =useState("");
+  const navigate = useNavigate();
+      
+  const regSubmit=()=>{
+    var obj = {name: name, email: email, password: password};
+    alert(JSON.stringify(obj));
+    
+  }
 
 
 
@@ -19,9 +30,9 @@ return(
         <div className="form-group mt-3">
           <label>Full Name</label>
           <input
-            type="email"
+            type="text"
             className="form-control mt-1"
-            placeholder="Name"
+            value={name} onChange={(e)=>setName(e.target.value)}
           />
         </div>
         <div className="form-group mt-3">
@@ -29,7 +40,7 @@ return(
           <input
             type="email"
             className="form-control mt-1"
-            placeholder="Email Address"
+            value={email} onChange={(e)=>setEmail(e.target.value)}
           />
         </div>
         <div className="form-group mt-3">
@@ -37,7 +48,7 @@ return(
           <input
             type="password"
             className="form-control mt-1"
-            placeholder="Password"
+            value={password} onChange={(e)=>setPassword(e.target.value)}
           />
         </div>
         <div className="form-group mt-3">
@@ -45,7 +56,7 @@ return(
           <input
             type="password"
             className="form-control mt-1"
-            placeholder="Password"
+            value={confirmPassword} onChange={(e)=>setConfirmPassword(e.target.value)}
           />
         </div>
         
@@ -54,7 +65,7 @@ return(
         </p>
         </form>
         <div className="d-grid gap-2 mt-3">
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className="btn btn-primary" onClick={regSubmit()}>
             Submit
           </button>
         </div>
