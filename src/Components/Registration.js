@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import "bootstrap/dist/css/bootstrap.min.css"
-import './login.css';
+import './registration.css';
 
 const Registration = ()=>{
 
@@ -11,8 +11,9 @@ const Registration = ()=>{
 
 return(
     <div className="Auth-form-container">
-    <form className="Auth-form">
       <div className="Auth-form-content">
+    <form className="Auth-form">
+      
         <h3 className="Auth-form-title">Sign Up</h3>
 
         <div className="form-group mt-3">
@@ -47,16 +48,20 @@ return(
             placeholder="Password"
           />
         </div>
+        
+        <p className="text-center mt-2">
+          Forgot <a href="#">password?</a>
+        </p>
+        </form>
         <div className="d-grid gap-2 mt-3">
           <button type="submit" className="btn btn-primary">
             Submit
           </button>
         </div>
-        <p className="text-center mt-2">
-          Forgot <a href="#">password?</a>
-        </p>
       </div>
-    </form>
+   
+
+        
   </div>
 
 
