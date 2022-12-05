@@ -10,7 +10,7 @@ const Login = ()=>{
 
     const loginSubmit= ()=>{
         var obj = {email: email, password: password};
-        alert (obj.email);
+        //alert (obj.email);
         axios.post("http://127.0.0.1:8000/api/login",obj)
         .then(resp=>{
             var token = resp.data;
