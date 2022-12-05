@@ -12,8 +12,39 @@ const Registration = ()=>{
   const navigate = useNavigate();
       
   const regSubmit=()=>{
-    var obj = {name: name, email: email, password: password};
-    alert(JSON.stringify(obj));
+    if(name==""){
+      alert('name can not be empty');
+    }
+    else if(email==""){
+      alert('email can not be empty');
+    }
+    else if(password==""){
+      alert('password can not be empty');
+    }
+    else if(confirmPassword==""){
+      alert('confirmPassword can not be empty');
+    }
+    else if(confirmPassword != password){
+      alert('Password and Confirm Password does not match');
+    }
+    else{
+      var obj = {name: name, email: email, password: password};
+      alert(JSON.stringify(obj));
+      axios.post("http://127.0.0.1:8000/api/signUp",obj)
+        .then(resp=>{
+            var flag = resp.data;
+            if(flag == true){
+              alert("Registration successfull");
+              navigate('/login');
+            }else{
+              alert("Registration failed");
+              navigate('/registration');
+            }
+        }).catch(err=>{
+            console.log(err);
+        });
+    
+    }
     
   }
 
