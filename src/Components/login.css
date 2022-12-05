@@ -4,6 +4,11 @@
     align-items: center;
 }
 
+button.btn.btn-primary {
+  margin-left: 105px;
+  margin-right: 105px;
+}
+
 
 
 .App {

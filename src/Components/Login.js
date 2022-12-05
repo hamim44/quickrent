@@ -1,7 +1,7 @@
 import React, {useState, userEffect} from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+import './login.css';
 const Login = ()=>{
     let[token, setToken]= useState("");
     let[email, setEmail] = useState("");
@@ -30,15 +30,44 @@ const Login = ()=>{
 
     }
     return(
-        <div>
-            <form>
-                <input type="text" value={email} onChange={(e)=>setEmail(e.target.value)}></input>
-                <input type="password" value={password} onChange={(e)=>setPassword(e.target.value)}></input>
+      <div className="Auth-form-container">
+                <div className="Auth-form-content">
+      <form className="Auth-form">
 
-            </form>
-                <button onClick={loginSubmit}>Login</button>
+          <h2 className="Auth-form-title">Log In</h2>
+          <div className="form-group mt-3">
+            <label>Email address</label>
+            <input
+              type="email"
+              value={email} onChange={(e)=>setEmail(e.target.value)}
+              className="form-control mt-1"
+              placeholder="Enter email"
+            />
+          </div>
+          <div className="form-group mt-3">
+            <label>Password</label>
+            <input
+              type="password" value={password} onChange={(e)=>setPassword(e.target.value)}
+              className="form-control mt-1"
+              placeholder="Enter password"
+            />
+          </div>
+         
+          <p className="forgot-password text-right mt-2">
+            Forgot <a href="#">password?</a>
+          </p>
+          </form>
+          <div className="d-grid gap-2 mt-3">
+            <button onClick={loginSubmit} className="btn btn-primary">
+              Submit
+            </button>
+          </div>
+    </div>
         </div>
+  
 
-    )
-}
+     
+
+    );
+};
 export default Login;  
