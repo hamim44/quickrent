@@ -30,50 +30,40 @@ const Login = ()=>{
 
     }
     return(
-        <div>
-            <form className='d-flex justify-content-center align-items-center'>
-
-            <div className='w-50'>
-          <div className='mb-3 mt-3 w-50 text-center'>
-            <h1>Login</h1>
-          </div>
-          <div className='mb-3 mt-3'>
-            <label className='form-label'>Email:</label>
+      <div className="Auth-form-container">
+      <form className="Auth-form">
+        <div className="Auth-form-content">
+          <h3 className="Auth-form-title">Log In</h3>
+          <div className="form-group mt-3">
+            <label>Email address</label>
             <input
               type="email"
-              className='form-control w-50'
-              
-              placeholder='Enter email'
-              
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            ></input>
+              value={email} onChange={(e)=>setEmail(e.target.value)}
+              className="form-control mt-1"
+              placeholder="Enter email"
+            />
           </div>
-          <div className='mb-3'>
-            <label className='form-label'>Password:</label>
+          <div className="form-group mt-3">
+            <label>Password</label>
             <input
-              type='password'
-              className='form-control w-50'
-              
-              placeholder='Enter password'
-              
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            ></input>
+              type="password" value={password} onChange={(e)=>setPassword(e.target.value)}
+              className="form-control mt-1"
+              placeholder="Enter password"
+            />
           </div>
-          {/* <button type='submit' className='btn btn-primary' onClick={loginSubmit}>Login</button> */}
+         
+          <p className="forgot-password text-right mt-2">
+            Forgot <a href="#">password?</a>
+          </p>
         </div>
-        
+      </form>
 
-                {/* <input type="text" value={email} onChange={(e)=>setEmail(e.target.value)}></input>
-                <input type="password" value={password} onChange={(e)=>setPassword(e.target.value)}></input> */}
-
-            </form>
-            <div className='d-flex justify-content-center align-items-center'>
-            <button type='submit' className='btn btn-primary' onClick={loginSubmit}>Login</button>
-            </div>
-                {/* <button type='submit' className='btn btn-primary' onClick={loginSubmit}>Login</button> */}
-        </div>
+      <div className="d-grid gap-2 mt-3">
+            <button onClick={loginSubmit} className="btn btn-primary">
+              Submit
+            </button>
+          </div>
+    </div>
 
     );
 };
