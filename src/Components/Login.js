@@ -31,14 +31,50 @@ const Login = ()=>{
     }
     return(
         <div>
-            <form>
-                <input type="text" value={email} onChange={(e)=>setEmail(e.target.value)}></input>
-                <input type="password" value={password} onChange={(e)=>setPassword(e.target.value)}></input>
+            <form className='d-flex justify-content-center align-items-center'>
+
+            <div className='w-50'>
+          <div className='mb-3 mt-3 w-50 text-center'>
+            <h1>Login</h1>
+          </div>
+          <div className='mb-3 mt-3'>
+            <label className='form-label'>Email:</label>
+            <input
+              type="email"
+              className='form-control w-50'
+              
+              placeholder='Enter email'
+              
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            ></input>
+          </div>
+          <div className='mb-3'>
+            <label className='form-label'>Password:</label>
+            <input
+              type='password'
+              className='form-control w-50'
+              
+              placeholder='Enter password'
+              
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            ></input>
+          </div>
+          {/* <button type='submit' className='btn btn-primary' onClick={loginSubmit}>Login</button> */}
+        </div>
+        
+
+                {/* <input type="text" value={email} onChange={(e)=>setEmail(e.target.value)}></input>
+                <input type="password" value={password} onChange={(e)=>setPassword(e.target.value)}></input> */}
 
             </form>
-                <button onClick={loginSubmit}>Login</button>
+            <div className='d-flex justify-content-center align-items-center'>
+            <button type='submit' className='btn btn-primary' onClick={loginSubmit}>Login</button>
+            </div>
+                {/* <button type='submit' className='btn btn-primary' onClick={loginSubmit}>Login</button> */}
         </div>
 
-    )
-}
+    );
+};
 export default Login;  
