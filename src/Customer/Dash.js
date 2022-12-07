@@ -22,11 +22,11 @@ const Dash = () => {
                  <script>
                     {/* <link>        </link> */}
                  </script>
-                        <a href="/"><button type="submit" className="btn btn-primary btn-lg btn-block">
+                        <a href="/product/product"><button type="submit" className="btn btn-primary btn-lg btn-bloc">
                                   My Products </button></a> <br></br>
-                        <a href="/"><button type="submit" className="btn btn-primary btn-lg btn-block">
+                        <a href="/product/rentProduct"><button type="submit" className="btn btn-primary btn-lg btn-bloc">
                                  Rent Products </button></a><br></br>
-                        <a href="/"><button type="submit" className="btn btn-primary btn-lg btn-block">
+                        <a href="/"><button type="submit" className="btn btn-primary btn-lg btn-bloc">
                                  my Order</button></a>
 
 

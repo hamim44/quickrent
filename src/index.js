@@ -11,9 +11,12 @@ import ProductDetail from './Components/ProductDetail';
 import APIProducts from './Components/APIProducts';
 import Login from './Components/Login';
 import Logout from './Components/Logout';
-import Product from  './Components/Product';
+import Product from  './Product/Product';
 import Dash from  './Customer/Dash';
 import Registration from './Components/Registration';
+import RentingProduct from './Product/RentingProduct';
+import RentProduct from './Product/RentProduct';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -26,9 +29,11 @@ root.render(
       <Route exact path='/apiproducts' element={<APIProducts/>} />
       <Route exact path='/login' element={<Login/>} />
       <Route exact path='/logout' element={<Logout/>} />
-      <Route exact path='/Product' element={<Product/>} />
+      <Route exact path='/product/Product' element={<Product/>} />
       <Route exact path='/customer/Dash' element={<Dash/>} />
       <Route exact path='/registration' element={<Registration/>} />
+      <Route exact path='/Product/RentingProduct' element={<RentingProduct/>} />
+      <Route exact path='/Product/RentProduct' element={<RentProduct/>} />
       </Routes>
      
     </Router>

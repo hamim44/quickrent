@@ -11,6 +11,11 @@
 
    
 }
+
+button.btn.btn-primary {
+    margin-left: 15px;
+    margin-right: 105px;
+}
 .btn {
     letter-spacing: normal;
     font-size: 20px;
@@ -28,8 +33,23 @@
 button#dropdown-basic-button {
     font-size: 20px;
     margin-left: 1500px;
+    margin-top: -76px;
 }
 
+a.dropdown-btn {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 35px;
+    margin: 27px;
+    font-style: initial;
+}
+
+button.btn.btn-primary {
+    margin-top: 14px;
+    margin-right: 0px;
+    cursor: pointer;
+    /* font-size: 26px; */
+}
 
 .btn {
     font-weight: 600;
