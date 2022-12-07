@@ -2,3 +2,14 @@ button.btn.btn-primary {
     margin-top: 14px;
     margin-right: 99px;
 }
+
+.text-center a{
+    text-decoration: none;
+
+}
+
+.text-center a {
+    text-decoration-color: initial;
+    line-height: 17px;
+    font-size: 18px;
+}

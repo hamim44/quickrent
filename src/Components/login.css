@@ -9,6 +9,22 @@ button.btn.btn-primary {
   margin-right: 105px;
 }
 
+form.Auth-form {
+  padding: 42px;
+}
+
+.remember  {
+  font-size: 27px;
+}
+
+.form-group a {
+  text-decoration: none;
+}
+
+.forgot-password a{
+  text-decoration: none;
+
+}
 
 
 .App {

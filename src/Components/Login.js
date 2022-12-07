@@ -52,10 +52,27 @@ const Login = ()=>{
               placeholder="Enter password"
             />
           </div>
+
+          <div className="remember">
+             <input type="checkbox"  name="lsRememberMe" />
+                <label>Remember me</label>
+          </div>
+
          
-          <p className="forgot-password text-right mt-2">
-            Forgot <a href="#">password?</a>
+          <p className="forgot-password ">
+             <a href="#"> Forgot password</a>
           </p>
+
+          <div class="form-group">
+              <div>
+                <a href="./registration">
+                  Create an Account
+                </a>
+              </div>
+           </div>
+
+ 
+        
           </form>
 
           

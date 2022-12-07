@@ -91,9 +91,16 @@ return(
           />
         </div>
         
-        <p className="text-center mt-2">
-          Forgot <a href="#">password?</a>
+        <p className="text-center">
+           <a href="#"> Forgot password</a>
         </p>
+
+        <div class="text-center">
+          <a href="./Login" class="primary-color">Existing User? Login Now</a>
+        </div>
+
+
+
         </form>
         <div className="d-grid gap-2 mt-3">
           <button type="submit" className="btn btn-primary" onClick={regSubmit}>
