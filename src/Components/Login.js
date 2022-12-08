@@ -60,7 +60,7 @@ const Login = ()=>{
 
          
           <p className="forgot-password ">
-             <a href="#"> Forgot password</a>
+             <a href="./customer/Forget_password"> Forgot password</a>
           </p>
 
           <div class="form-group">

@@ -1,6 +1,8 @@
 import React, {Customer} from "react";
 import { Link } from "react-router-dom";
 import Customermanu from "../Customer/Customermanu";
+import '../Customer/Editprofile.css';
+
 
 
 const Editprofile = () =>{
@@ -19,7 +21,7 @@ const Editprofile = () =>{
                 <div className="col-12">
                     <div className="card">
                         <div className="card-body">
-                            <form>
+                            <form className="from-size">
                                
                                 <div className="row">
                                     <div className="col-md-3">

@@ -17,9 +17,9 @@ import Registration from './Components/Registration';
 import RentingProduct from './Product/RentingProduct';
 import RentProduct from './Product/RentProduct';
 import Myorders  from './Orderlist/MyOrders';
-import AddProduct from './Product/AddProduct'
-import Editprofile from './Customer/Editprofile'
-
+import AddProduct from './Product/AddProduct';
+import Editprofile from './Customer/Editprofile';
+import Forget_password from './Customer/Forget_password';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -41,6 +41,7 @@ root.render(
       <Route exact path='/Orderlist/MyOrders' element={<Myorders/>} />
       <Route exact path='/Product/AddProduct' element={<AddProduct/>} />
       <Route exact path='/Customer/Editprofile' element={<Editprofile/>} />
+      <Route exact path='/Customer/Forget_password' element={<Forget_password/>} />
       </Routes>
      
     </Router>
