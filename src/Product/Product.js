@@ -1,6 +1,5 @@
 import React, {Components} from "react";
 import { Link } from "react-router-dom";
-import Customermanu from "../Customer/Customermanu";
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round"></link>;
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"></link>;
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"></link>;

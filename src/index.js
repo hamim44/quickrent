@@ -16,6 +16,10 @@ import Dash from  './Customer/Dash';
 import Registration from './Components/Registration';
 import RentingProduct from './Product/RentingProduct';
 import RentProduct from './Product/RentProduct';
+import Myorders  from './Orderlist/MyOrders';
+import AddProduct from './Product/AddProduct'
+import Editprofile from './Customer/Editprofile'
+
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -34,6 +38,9 @@ root.render(
       <Route exact path='/registration' element={<Registration/>} />
       <Route exact path='/Product/RentingProduct' element={<RentingProduct/>} />
       <Route exact path='/Product/RentProduct' element={<RentProduct/>} />
+      <Route exact path='/Orderlist/MyOrders' element={<Myorders/>} />
+      <Route exact path='/Product/AddProduct' element={<AddProduct/>} />
+      <Route exact path='/Customer/Editprofile' element={<Editprofile/>} />
       </Routes>
      
     </Router>

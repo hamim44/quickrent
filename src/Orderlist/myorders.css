@@ -7,52 +7,39 @@ body {
 .table-responsive {
     margin: 30px 0;
 }
-
 .table-wrapper {
-    min-width: 700px;
+    min-width: 1000px;
     background: #fff;
     padding: 20px 25px;
     border-radius: 3px;
-    box-shadow: 0 1px 1px rgb(0 0 0 / 5%);
-    margin: 25px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
 }
-.table-titlei {
-    background-image: initial;
-    background-color: rgb(22, 114, 174);
-    color: rgb(232, 230, 227);
-    padding: 16px 30px;
-    margin: 27px;
-    border-radius: 3px 3px 0 0;
-    font-size: 8px;
-  
-}
-
 .table-title {
     padding-bottom: 15px;
     background: #299be4;
     color: #fff;
     padding: 16px 30px;
-    margin: -17px 24px 10px;
+    margin: -20px -25px 10px;
     border-radius: 3px 3px 0 0;
 }
 .table-title h2 {
     margin: 5px 0 0;
-    font-size: 30px;
+    font-size: 24px;
 }
 .table-title .btn {
     color: #566787;
     float: right;
-    font-size: 19px;
+    font-size: 13px;
     background: #fff;
     border: none;
-    min-width: 10px;
+    min-width: 50px;
     border-radius: 2px;
     border: none;
     outline: none !important;
     margin-left: 10px;
 }
 .table-title .btn:hover, .table-title .btn:focus {
-    color: #000000;
+    color: #566787;
     background: #f2f2f2;
 }
 .table-title .btn i {
@@ -169,11 +156,4 @@ table.table .avatar {
     float: left;
     margin-top: 10px;
     font-size: 13px;
-}
-
-.table {
-    font-family: helvetica;
-    margin-left: 25px;
-    /* margin-right: 52px; */
-    margin-top: 1px;
 }

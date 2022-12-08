@@ -2,8 +2,6 @@ import React, {Customer} from "react";
 import { Link } from "react-router-dom";
 import './Dash.css';
 import Customermanu from "./Customermanu";
-
-
 const Dash = () => {
     
 
@@ -12,9 +10,10 @@ const Dash = () => {
        <div className="">
 
                  <Customermanu/>
+                 <div className="section">
            
-                <div className="">
-                    <h1> HomePage</h1>
+                 <div className="section-header">
+                             <h1>HomePage</h1>
                  </div>
                  <div className="section-btn"> 
 
@@ -26,10 +25,11 @@ const Dash = () => {
                                   My Products </button></a> <br></br>
                         <a href="/product/rentProduct"><button type="submit" className="btn btn-primary btn-lg btn-bloc">
                                  Rent Products </button></a><br></br>
-                        <a href="/"><button type="submit" className="btn btn-primary btn-lg btn-bloc">
+                        <a href="/orderlist/myorders"><button type="submit" className="btn btn-primary btn-lg btn-bloc">
                                  my Order</button></a>
 
 
+                 </div>
                  </div>
  
         </div>

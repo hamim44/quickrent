@@ -1,6 +1,8 @@
 import React, {Components} from "react";
 import { Link } from "react-router-dom";
 import './rentProduct.css';
+import Customermanu from "../Customer/Customermanu";
+
 <Link src="https://fonts.googleapis.com/css?family=Roboto|Varela+Round"></Link>;
 <Link src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"></Link>;
 <Link src="https://fonts.googleapis.com/icon?family=Material+Icons"></Link>;
@@ -16,20 +18,17 @@ const RentProduct = () =>{
 
 
     return(
-
-       
+<div>
+       <Customermanu/>
 
     <div className="table-responsive">
         <div className="table-wrapper">
-            <div className="table-title">
+            <div className="table-titlei">
                 <div className="row">
                     <div className="col-sm-5">
                         <h2>Borrow <b>Product</b></h2>
                     </div>
-                    <div className="col-sm-7">
-                       
-                        <a href="/customer/dash" className="btn btn-secondary"> <span>Customer Dashboard</span></a>
-                    </div>
+                    
                 </div>
             </div>
 
@@ -78,6 +77,8 @@ const RentProduct = () =>{
 
 
         </div>
+    </div>
+
     </div>
 
 )
