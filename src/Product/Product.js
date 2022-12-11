@@ -124,7 +124,7 @@ const Product = () => {
                         <td>{product.details}</td>
                         <td>{product.status}</td>
                         <td>
-                            <div><button href="">Edit</button></div>
+                            <div><button><a href={"/Product/EditProduct"+product.id}>Edit</a></button></div>
                             <div><button onClick={toggleProduct} data-id={product.id}>Toggle</button></div>
                             <div><button onClick={deleteProduct} data-id={product.id}>Delete</button></div>                        
                         </td>

@@ -45,7 +45,8 @@ root.render(
       <Route exact path='/Customer/Editprofile' element={<Editprofile/>} />
       <Route exact path='/Customer/Forget_password' element={<Forget_password/>} />
       <Route exact path='/Components/axiosConfig' element={<axiosConfig/>} />
-      <Route exact path='/Product/EditProduct' element={<Editproduct/>} />
+      <Route exact path='/Product/EditProduct:id' element={<Editproduct/>} />
+      {/* <Route exact path='/Product/EditProduct' element={<Editproduct/>} /> */}
       </Routes>
      
     </Router>

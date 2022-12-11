@@ -45,7 +45,7 @@ const AddProduct = () => {
             }).catch(err=>{
                 console.log(err);
             });
-          }
+        }
         
     }
     return(
