@@ -29,7 +29,7 @@ const Registration = ()=>{
     }
     else{
       var obj = {name: name, email: email, password: password};
-      alert(JSON.stringify(obj));
+      //alert(JSON.stringify(obj));
       axios.post("http://127.0.0.1:8000/api/signUp",obj)
         .then(resp=>{
             var flag = resp.data;
