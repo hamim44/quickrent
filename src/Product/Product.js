@@ -1,4 +1,7 @@
 import React, {Components} from "react";
+import {useState, useEffect} from "react";
+import axiosConfig from "../Components/axiosConfig";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round"></link>;
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"></link>;
@@ -10,6 +13,72 @@ import { Link } from "react-router-dom";
 
 
 const Product = () => {
+    const navigate = useNavigate();
+    const[products, setProducts] = useState([]);
+
+    // alert(localStorage.getItem("user"));
+
+    useEffect(()=>{
+        axiosConfig.get("product/myProduct")
+        .then(resp=>{
+        //console.log(resp.data);
+        setProducts(resp.data);
+         }).catch(err=>{
+        console.log(err);
+    });
+    },[]);
+
+    const deleteProduct = (event) => {
+        // Get the ID of the product from the button's dataset
+        const productId = event.target.dataset.id;
+    
+        // Show a confirmation dialog to the user
+        const confirmation = window.confirm('Are you sure you want to delete this product?');
+    
+        // If the user clicks OK, delete the product
+        if (confirmation) {
+          axiosConfig
+            .get('/product/deleteProduct/' + productId)
+            .then((resp) => {
+              const flag = resp.data;
+              //console.log(flag);
+              if (flag === 'Invalid token') {
+                navigate('/login');
+              } else if (flag) {
+                alert('Product deleted successfully');
+                window.location.reload();
+                //navigate('/customer/Dash');
+              }
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        }
+    };
+
+    const toggleProduct = (event) => {
+        // Get the ID of the product from the button's dataset
+        const productId = event.target.dataset.id;
+        axiosConfig
+            .get('/product/toggleProduct/' + productId)
+            .then((resp) => {
+              const flag = resp.data;
+              //console.log(flag);
+              if (flag === 'Invalid token') {
+                navigate('/login');
+              } else if (flag) {
+                alert('Product toggled successfully');
+                window.location.reload();
+                //navigate('/customer/Dash');
+              }
+              else{console.log(flag);}
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+    
+    };
+    
     return(
 
 
@@ -46,17 +115,22 @@ const Product = () => {
                     </tr>
                 </thead>
                 <tbody>
-                 <tr>
-                        <td>1</td>
-                        
-                        <td>04/10/2013</td>
-                        <td>Admin</td>
-                        <td><span class="status text-success">&bull;</span> Active</td>
+                {products.map(product=>(
+                    <tr >
+                        <td>{product.id}</td>
+                        <td>{product.name}</td>
+                        <td>{product.price}</td>
+                        <td>{product.details}</td>
+                        <td>{product.details}</td>
+                        <td>{product.status}</td>
                         <td>
-                            <a href="#" class="settings" title="Settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
-                            <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
+                            <div><button href="">Edit</button></div>
+                            <div><button onClick={toggleProduct} data-id={product.id}>Toggle</button></div>
+                            <div><button onClick={deleteProduct} data-id={product.id}>Delete</button></div>                        
                         </td>
-                </tr> 
+
+                    </tr>
+                ))} 
                   {/* @foreach($products as $product)
                     <tr>
                         <td>{{$product->id}}</td>
