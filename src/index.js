@@ -37,9 +37,9 @@ root.render(
       <Route exact path='/logout' element={<Logout/>} />
       <Route exact path='/product/Product' element={<Product/>} />
       <Route exact path='/customer/Dash' element={<Dash/>} />
-      <Route exact path='/registration' element={<Registration/>} />
-      <Route exact path='/Product/RentingProduct' element={<RentingProduct/>} />
+      <Route exact path='/registration' element={<Registration/>} />    
       <Route exact path='/Product/RentProduct' element={<RentProduct/>} />
+      <Route exact path='/Product/RentingProduct' element={<RentingProduct/>} />
       <Route exact path='/Orderlist/MyOrders' element={<Myorders/>} />
       <Route exact path='/Product/AddProduct' element={<AddProduct/>} />
       <Route exact path='/Customer/Editprofile' element={<Editprofile/>} />
