@@ -21,6 +21,7 @@ import AddProduct from './Product/AddProduct';
 import Editprofile from './Customer/Editprofile';
 import Forget_password from './Customer/Forget_password';
 import axiosConfig from './Components/axiosConfig';
+import Editproduct from './Product/EditProduct';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -44,6 +45,7 @@ root.render(
       <Route exact path='/Customer/Editprofile' element={<Editprofile/>} />
       <Route exact path='/Customer/Forget_password' element={<Forget_password/>} />
       <Route exact path='/Components/axiosConfig' element={<axiosConfig/>} />
+      <Route exact path='/Product/EditProduct' element={<Editproduct/>} />
       </Routes>
      
     </Router>
