@@ -1,4 +1,7 @@
 import React, {Components} from "react";
+import {useState, useEffect} from "react";
+import axiosConfig from "../Components/axiosConfig";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import './rentProduct.css';
 import Customermanu from "../Customer/Customermanu";
@@ -15,7 +18,20 @@ import Customermanu from "../Customer/Customermanu";
 
 
 const RentProduct = () =>{
+    const navigate = useNavigate();
+    const[products, setProducts] = useState([]);
 
+    // alert(localStorage.getItem("user"));
+
+    useEffect(()=>{
+        axiosConfig.get("product/rentproduct")
+        .then(resp=>{
+        //console.log(resp.data);
+        setProducts(resp.data);
+         }).catch(err=>{
+        console.log(err);
+    });
+    },[]);
 
     return(
 <div>
@@ -41,34 +57,25 @@ const RentProduct = () =>{
                         <th>Price</th>
                         <th>Category</th>
                         <th>Detail</th>
-                        <th>Photo</th>
+                        <th>Actions</th>
+                        
                          
                     </tr>
                 </thead>
-                <tbody>
-                     <tr>
-                        <td>1</td>
-                       {/* <td><a href="#"><img src="#" > </img> Michael Holz  </a></td>*/}
-                        <td>04/10/2013</td>
-                        <td>Admin</td>
-                        <td><span className="status text-success"></span> Active</td>
+                <tbody>                   
+                    {products.map(product=>(
+                    <tr >
+                        <td>{product.id}</td>
+                        <td>{product.name}</td>
+                        <td>{product.price}</td>
+                        <td>{product.category}</td>
+                        <td>{product.details}</td>
                         <td>
-                            <a href="#" className="settings" title="Settings" data-toggle="tooltip"><i className="material-icons"></i></a>
-                            <a href="#" className="delete" title="Delete" data-toggle="tooltip"><i className="material-icons"></i></a>
+                            <div><button href="">Rent</button></div>                        
                         </td>
+
                     </tr>
-                   
-                   {/*<tr>
-                        <td>{{$product->id}}</td> 
-                        <td>{{$product->name}}</td>
-                        <td>{{$product->price}}</td>
-                        <td>{{$product->category}}</td>
-                        <td>{{$product->details}}</td>
-                        <td><img src="#" alt="" style="max-width: 200px; m-height: 110px;"></td>
-                        <td>
-                            <a href="#" className="edit" title="Edit" data-toggle="tooltip"><i className="material-icons">&#xE8B8;</i></a>
-                        </td>
-                      </tr>*/}
+                ))}
                     
                 </tbody>
             </table>
