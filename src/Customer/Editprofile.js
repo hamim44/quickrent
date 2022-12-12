@@ -1,78 +1,151 @@
 import React, {Customer} from "react";
-import { Link } from "react-router-dom";
 import Customermanu from "../Customer/Customermanu";
 import '../Customer/Editprofile.css';
-
+import {useState, useEffect} from "react";
+import axiosConfig from "../Components/axiosConfig";
+import { useNavigate } from "react-router-dom";
 
 
 const Editprofile = () =>{
+    const navigate = useNavigate();
+    let [name, setName] = useState("");
+    let [email, setEmail] = useState("");
+    let [password, setPassword] = useState("");
+    let [cPassword, setCPassword] = useState("");
+    let [phone, setPhone] = useState("");
+    let [country, setCountry] = useState("");
+    let [address, setAddress] = useState("");
+    let [state, setState] = useState("");
+    let [city, setCity] = useState("");
+    let [data, setData] = useState("");
+    //let [photo, setPhoto] = useState(null);
+    let [zip, setZip] = useState("");
+    useEffect(()=>{
+       //alert("hello");
+        axiosConfig.get("profileData")
+        .then(resp=>{
+        console.log(resp.data);
+           var data = resp.data;
+           setName(data.name)
+           setEmail(data.email) 
+           setPhone(data.phone)
+           setCountry(data.country) 
+           setAddress(data.address) 
+           setState(data.state) 
+           setCity(data.city) 
+           setZip(data.zip)          
+         }).catch(err=>{
+        console.log(err);
+    });
+    },[]);
+
+    const editProfileSubmit= ()=>{
+        if(name==""){
+            alert('name can not be empty');
+          }
+          else if(email==""){
+            alert('email can not be empty');
+          }
+          else if(phone==""){
+            alert('phone can not be empty');
+          }
+          else if(country==""){
+            alert('country can not be empty');
+          }
+          else if(address==""){
+            alert('address can not be empty');
+          }
+          else if(state==""){
+            alert('state can not be empty');
+          }
+          else if(city==""){
+            alert('city can not be empty');
+          }
+          else if(zip==""){
+            alert('zip can not be empty');
+          }
+          else if(password!=""){
+            if(password!=cPassword){
+                alert("password and confirm password must be same")
+            }
+          }
+          else{
+            var obj = {name: name, email: email, phone: phone, country: country, address: address, state: state, city: city, zip: zip, password: password};
+            console.log(obj);
+            axiosConfig.post("editProfile",obj)
+            .then(resp=>{
+                var flag = resp.data;
+                //console.log(flag);            
+                if(flag == "Invalid token"){
+                    navigate('/login');
+                }else if(flag){
+                    alert("profile updated successfully")
+                    //navigate('/customer/Dash');
+                }
+            }).catch(err=>{
+                console.log(err);
+            });
+        }
+        
+    }
 
     return (
         <div>
-            <Customermanu/>
 
-            <header >
-	<div class="wrapper">
-		<div class="edit">
-			<h1>Edit profile</h1>
-		</div>
-		<div class="home">
-			<a href="#">HOME</a>
-		</div>
-	</div>
-</header>
+            <div><Customermanu/></div>
+
+          
+	
 
 <h2>Edit Your Details</h2>
-
-<section class="edit_form">
+<div></div>
 <div class="wrapper2">
 	<div class="form">
 	<div class="f_name">
-		<label for="name">Name: </label>
-		<input type="text" name="" placeholder="Enter your name"/>
+		<label  htmlFor="name">Name: </label>
+		<input type="text" name="name" value={name} onChange={(e)=>setName(e.target.value)}></input>
 	</div>
 	<div class="f_email">
-		<label for="email">Email: </label>
-		<input type="email" name="" placeholder="Ex:abc@gamil.com"/>
+		<label  htmlFor="email">Email: </label>
+		<input type="email" name="email" value={email} onChange={(e)=>setEmail(e.target.value)}></input>
 	</div>
 	<div class="f_phone">
-		<label for="phone">Phone: </label>
-		<input type="number" name="" placeholder="+8801......."/>
+		<label  htmlFor="phone">Phone: </label>
+		<input type="number" name="phone" value={phone} onChange={(e)=>setPhone(e.target.value)}></input>
 	</div>
 	<div class="f_country">
-		<label for="country">Country: </label>
-		<input type="country" name="" placeholder="Enter your country name"/>
+		<label  htmlFor="country">Country: </label>
+		<input type="text" name="country" value={country} onChange={(e)=>setCountry(e.target.value)}></input>
 	</div>
 	<div class="f_address">
-		<label for="address">Address: </label>
-		<input type="text" name="" placeholder=" Your address"/>
+		<label  htmlFor="address">Address: </label>
+		<input type="text" name="address" value={address} onChange={(e)=>setAddress(e.target.value)}></input>
 	</div>
 	<div class="f_city">
-		<label for="city">City: </label>
-		<input type="text" name="" placeholder="Enter your city name"/>
+		<label  htmlFor="city">City: </label>
+		<input type="text" name="city" value={city} onChange={(e)=>setCity(e.target.value)}></input>
 	</div>
 	<div class="f_state">
-		<label for="state">State: </label>
-		<input type="text" name="" placeholder="Your state"/>
+		<label  htmlFor="state">State: </label>
+		<input type="text" name="state" value={state} onChange={(e)=>setState(e.target.value)}></input>
 	</div>
 	<div class="f_zip">
-		<label for="zip">Zip: </label>
-		<input type="text" name="" placeholder="Ex:1629"/>
+		<label  htmlFor="zip">Zip: </label>
+		<input type="text" name="zip" value={zip} onChange={(e)=>setZip(e.target.value)}></input>
 	</div>
 	<div class="f_pass">
-		<label for="password">Password: </label>
-		<input type="password" name="" placeholder="Enter your password"/>
+		<label  htmlFor="password">Password: </label>
+		<input type="password" name="password"  onChange={(e)=>setPassword(e.target.value)} ></input>
 	</div>
 	<div class="f_repass">
-		<label for="password">Re-Type password: </label>
-		<input type="password" name="" placeholder="Enter your re-type password"/>
+		<label  htmlFor="password">Re-Type password: </label>
+		<input type="password" name="cPassword"  onChange={(e)=>setCPassword(e.target.value)}></input>
 	</div>
 	<div class="f_btn">
-		<a class="button" href="#">Update</a>
+		<button class="btn btn-primary" type="button"  onClick={editProfileSubmit}>Save changes</button>
 	</div>
 	</div>
 </div>
-</section>
             
             {/* <div class="container-xl px-4 mt-4">
     
