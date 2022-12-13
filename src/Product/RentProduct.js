@@ -71,7 +71,7 @@ const RentProduct = () =>{
                         <td>{product.category}</td>
                         <td>{product.details}</td>
                         <td>
-                            <div><a href="/product/rentingProduct"><button >Rent</button></a></div>                        
+                            <div><a href={"/product/rentingProduct"+product.id}><button >Rent</button></a></div>                        
                         </td>
 
                     </tr>

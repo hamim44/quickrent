@@ -1,7 +1,10 @@
 import React, {Components} from "react";
 import { Link } from "react-router-dom";
 import './myorders.css';
+import {useState, useEffect} from "react";
 import Customermanu from "../Customer/Customermanu";
+import axiosConfig from "../Components/axiosConfig";
+import { useNavigate } from "react-router-dom";
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round"></link>;
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"></link>;
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"></link>;
@@ -11,6 +14,25 @@ import Customermanu from "../Customer/Customermanu";
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>;
 
 const Myorders = () => {
+    const navigate = useNavigate();
+    let[myBorrows, setMyBorrows] = useState("");
+    let[myRents, setMyRents] = useState("");
+
+    useEffect(() => {
+        axiosConfig.get("orderlist/myOrders")
+        .then(resp=>{
+            var flag = resp.data;
+            console.log(flag);            
+            if(flag == "Invalid token"){
+                navigate('/login');
+            }else {
+                setMyBorrows(flag.myBorrows);
+                setMyRents(flag.myRents);
+            }
+        }).catch(err=>{
+            console.log(err);
+        });
+    },[]);
     return(
       
 <div>
@@ -45,17 +67,19 @@ const Myorders = () => {
                     </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                        <td>1</td>
-                        <td><a href="#"><img src="#" className="avatar" alt="Avatar"></img> Michael Holz</a></td>
-                        <td>04/10/2013</td>
-                        <td>Admin</td>
-                        <td><span className="status text-success"></span> Active</td>
-                        <td>
-                            <a href="#" className="settings" title="Settings" data-toggle="tooltip"><i className="material-icons"></i></a>
-                            <a href="#" className="delete" title="Delete" data-toggle="tooltip"><i className="material-icons"></i></a>
-                        </td>
-                    </tr> 
+                    {myBorrows.map(myBorrow=>(
+                        <tr>
+                            <td>{myBorrow.id}</td>
+                            <td><a href="#"><img src="#" className="avatar" alt="Avatar"></img> {myBorrow.owner_id}</a></td>
+                            <td>{myBorrow.final_price}</td>
+                            <td> {myBorrow.product_id}</td>
+                            <td><span className="status text-success">{myBorrow.status}</span></td>
+                            <td>
+                                <a href="#" className="settings" title="Settings" data-toggle="tooltip"><i className="material-icons"></i></a>
+                                <a href="#" className="delete" title="Delete" data-toggle="tooltip"><i className="material-icons"></i></a>
+                            </td>
+                        </tr>
+                    ))} 
                     {/* 
                     @foreach($myBorrows as $myBorrow)
                     <tr>

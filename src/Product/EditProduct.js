@@ -134,7 +134,7 @@ const Editproduct =() => {
                                     {{-- <input type="file" name="photo" > --}}*/}
                                 </div>
                                 <div className="mb-3">
-                                    <button onClick={editProductSubmit}>Submit</button>
+                                    <button class="btn btn-primary" type="button"  onClick={editProductSubmit}>Submit</button>
                                 </div>
                               {/*   @isset($msg)
                                     <span className="text-success">{{ $msg }}</span>
