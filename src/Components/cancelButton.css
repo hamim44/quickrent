@@ -1,0 +1,14 @@
+.cancel-button {
+    background-color: #ff0000;
+    color: #ffffff;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .fa-times {
+    margin-right: 6px;
+  }
+  

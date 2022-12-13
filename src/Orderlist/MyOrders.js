@@ -9,14 +9,15 @@ import { useNavigate } from "react-router-dom";
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"></link>;
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"></link>;
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></link>;
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"></link>;
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>;
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>;
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>;
 
 const Myorders = () => {
     const navigate = useNavigate();
-    let[myBorrows, setMyBorrows] = useState("");
-    let[myRents, setMyRents] = useState("");
+    let[myBorrows, setMyBorrows] = useState([]);
+    let[myRents, setMyRents] = useState([]);
 
     useEffect(() => {
         axiosConfig.get("orderlist/myOrders")
@@ -33,14 +34,76 @@ const Myorders = () => {
             console.log(err);
         });
     },[]);
+
+    function CancelButton(id) {
+        return (
+          <button
+            style={{
+              color: 'red',
+              fontSize: '16px',
+              border: 'none',
+              backgroundColor: 'transparent',
+              cursor: 'pointer',
+            }}
+            onClick={() => {
+                axiosConfig.get("orderlist/cancelOrder/"+id)
+                .then(resp=>{
+                    var flag = resp.data;
+                    console.log(flag);            
+                    if(flag == "Invalid token"){
+                        navigate('/login');
+                    }else {
+                        alert(flag);
+                        window.location.reload()
+                    }
+                }).catch(err=>{
+                    console.log(err);
+                });
+            }}
+          >
+            <i className="material-icons">&#xe5c9;</i>
+            Cancel
+          </button>
+        );
+      }
+
+      function AcceptButton(id) {
+        return (
+          <button 
+          style={{
+            color: 'green',
+            fontSize: '16px',
+            border: 'none',
+            backgroundColor: 'transparent',
+            cursor: 'pointer',
+          }}
+          className="accept-button" 
+          onClick={() => {
+            axiosConfig.get("orderlist/confirmOrder/"+id)
+            .then(resp=>{
+                var flag = resp.data;
+                console.log(flag);            
+                if(flag == "Invalid token"){
+                    navigate('/login');
+                }else {
+                    alert(flag);
+                    window.location.reload()
+                }
+            }).catch(err=>{
+                console.log(err);
+            });
+        }}>
+            <i className="material-icons">&#xe5c9;</i>
+            Accept
+          </button>
+        );
+      }
+
     return(
       
 <div>
     <Customermanu/>
-    <div className="container-xl">
-        {/* @if (session()->has('msg'))
-        <strong><span className="text-success">{{ session()->get('msg') }}</span></strong>
-       @endif  */}
+    <div className="container-xl">       
     <div className="table-responsive">
         <div className="table-wrapper">
             <div className="table-title">
@@ -67,40 +130,19 @@ const Myorders = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {myBorrows.map(myBorrow=>(
-                        <tr>
-                            <td>{myBorrow.id}</td>
-                            <td><a href="#"><img src="#" className="avatar" alt="Avatar"></img> {myBorrow.owner_id}</a></td>
-                            <td>{myBorrow.final_price}</td>
-                            <td> {myBorrow.product_id}</td>
-                            <td><span className="status text-success">{myBorrow.status}</span></td>
-                            <td>
-                                <a href="#" className="settings" title="Settings" data-toggle="tooltip"><i className="material-icons"></i></a>
-                                <a href="#" className="delete" title="Delete" data-toggle="tooltip"><i className="material-icons"></i></a>
-                            </td>
-                        </tr>
-                    ))} 
-                    {/* 
-                    @foreach($myBorrows as $myBorrow)
+                {myBorrows.map(myBorrow=>(
                     <tr>
-                        <td>{{$myBorrow->id}}</td>
-                        <td>{{$myBorrow->owner_id}}</td>
-                        <td>{{$myBorrow->final_price}}</td>
-                        <td>{{$myBorrow->product_id}}</td>
-                        <td @if ($myBorrow->status=="pending")
-                            bgcolor="red"
-                            @elseif ($myBorrow->status=="confirm")
-                            bgcolor="yellow"
-                            @else
-                            bgcolor="lime"
-                        @endif>{{$myBorrow->status}}</td>
+                        <td>{myBorrow.id}</td>
+                        <td><a href="#"><img src="#" className="avatar" alt="Avatar"></img> {myBorrow.owner_id}</a></td>
+                        <td>{myBorrow.final_price}</td>
+                        <td> {myBorrow.product_id}</td>
+                        <td><span className="status text-success">{myBorrow.status}</span></td>
                         <td>
-                            <a href="cancelOrder/{{$myBorrow->id}}" className="delete" title="Cancel" data-toggle="tooltip"><i className="material-icons">&#xE5C9;</i></a>
-                            {{-- <a href="offerOrderPrice/{{$myBorrow->id}}/{{$price}}" className="offer" title="Offer Price" data-toggle="tooltip"><i className="material-icons">&#xe982;</i></a> --}}
-                            {{-- <a href="confirmOrder/{{$product->id}}" className="rent" title="Confirm" data-toggle="tooltip"><i className="material-icons">&#xe982;</i></a> --}}
+                           {CancelButton(myBorrow.id)}
+                            
                         </td>
                     </tr>
-                    @endforeach*/}
+                ))}                            
                 </tbody>
             </table>
             <br></br>
@@ -131,38 +173,20 @@ const Myorders = () => {
                     </tr>
                 </thead>
                 <tbody>
-                   <tr>
-                        <td>1</td>
-                        <td><a href="#"><img src="#" className="avatar" alt="Avatar"></img> Michael Holz</a></td>
-                        <td>04/10/2013</td>
-                        <td>Admin</td>
-                        <td><span className="status text-success"></span> Active</td>
-                        <td>
-                            <a href="#" className="settings" title="Settings" data-toggle="tooltip"><i className="material-icons"></i></a>
-                            <a href="#" className="delete" title="Delete" data-toggle="tooltip"><i className="material-icons"></i></a>
-                        </td>
-                    </tr> 
-                  {/*  @foreach($myRents as $myRent)
+                {myRents.map(myRent=>(
                     <tr>
-                        <td>{{$myRent->id}}</td>
-                        <td>{{$myRent->borrower_id}}</td>
-                        <td>{{$myRent->final_price}}</td>
-                        <td>{{$myRent->product_id}}</td>
-                        <td @if ($myRent->status=="pending")
-                            bgcolor="red"
-                            @elseif ($myRent->status=="confirmed")
-                            bgcolor="lime"
-                            @else
-                            bgcolor="yellow"
-                        @endif>{{$myRent->status}}</td>
-                        {{-- <td>{{$product->photo}}</td> --}}
+                        <td>{myRent.id}</td>
+                        <td><a href="#"><img src="#" className="avatar" alt="Avatar"></img> {myRent.borrower_id}</a></td>
+                        <td>{myRent.final_price}</td>
+                        <td> {myRent.product_id}</td>
+                        <td><span className="status text-success">{myRent.status}</span></td>
                         <td>
-                            <a href="cancelOrder/{{$myRent->id}}" className="delete" title="Cancel" data-toggle="tooltip"><i className="material-icons">&#xE5C9;</i></a>
-                            <a href="confirmOrder/{{$myRent->id}}" className="rent" title="Confirm" data-toggle="tooltip"><i className="material-icons">&#xe982;</i></a>
-
+                           {CancelButton(myRent.id)}
+                           {AcceptButton(myRent.id)}
+                            
                         </td>
                     </tr>
-                    @endforeach */}
+                ))}                  
                 </tbody>
             </table>
 

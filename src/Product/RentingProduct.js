@@ -65,6 +65,8 @@ const RentingProduct = () =>{
                     navigate('/login');
                 }else{
                     alert(flag);
+                    navigate('/product/rentProduct');
+                    
                 }                
             }).catch(err=>{
                 console.log(err);
