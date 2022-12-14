@@ -1,4 +1,5 @@
 import React, {Components} from "react";
+import Search from '../Components/Search';
 import {useState, useEffect} from "react";
 import axiosConfig from "../Components/axiosConfig";
 import { useNavigate } from "react-router-dom";
@@ -15,6 +16,7 @@ import { Link } from "react-router-dom";
 const Product = () => {
     const navigate = useNavigate();
     const[products, setProducts] = useState([]);
+    const[sproducts, setSProducts] = useState([]);
 
     // alert(localStorage.getItem("user"));
 
@@ -27,6 +29,12 @@ const Product = () => {
         console.log(err);
     });
     },[]);
+
+    const handleSearch = (results) => {
+        setSProducts(results);
+      };
+
+   
 
     const deleteProduct = (event) => {
         // Get the ID of the product from the button's dataset
@@ -94,7 +102,8 @@ const Product = () => {
                     <div class="col-sm-5">
                         <h2>Product <b>Management</b></h2>
                     </div>
-                    <div class="col-sm-7">
+                    <div class="col-sm-7"><Search products={products} onSearch={handleSearch} /></div>
+                    <div class="col-sm-7">                        
                         <a href="addProduct" class="btn btn-secondary"><i class="material-icons">&#xE147;</i> <span>Add Product</span></a>
                         <a href="/customer/dash" class="btn btn-secondary"> <span>Customer Dashboard</span></a>
                     </div>
@@ -115,7 +124,7 @@ const Product = () => {
                     </tr>
                 </thead>
                 <tbody>
-                {products.map(product=>(
+                {sproducts.map(product=>(
                     <tr >
                         <td>{product.id}</td>
                         <td>{product.name}</td>
